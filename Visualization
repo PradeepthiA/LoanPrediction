@@ -1,0 +1,3 @@
+sns.pairplot(ld, hue='Loan_Status', diag_kind='kde')
+# Visualize the count of approved and not approved loans
+sns.countplot(x='Loan_Status', data=ld)
