@@ -1,3 +1,28 @@
 sns.pairplot(ld, hue='Loan_Status', diag_kind='kde')
 # Visualize the count of approved and not approved loans
 sns.countplot(x='Loan_Status', data=ld)
+# Encode categorical variables using Label Encoding
+from sklearn.preprocessing import LabelEncoder
+
+# Assuming ld is your DataFrame
+categorical_cols = ld.select_dtypes(include=['object']).columns
+le = LabelEncoder()
+
+for col in categorical_cols:
+    # Convert the column to string before applying LabelEncoder
+    ld[col] = ld[col].astype(str)
+    
+    # Apply LabelEncoder
+    ld[col] = le.fit_transform(ld[col])
+# Split the dataset into features (X) and target variable (y)
+X = ld.drop(columns = ['Loan_ID','Loan_Status'], axis=1)
+y = ld['Loan_Status']
+X
+X = ld.drop(columns = ['Loan_ID','Loan_Status'], axis=1)
+y = ld['Loan_Status']
+y
+# Example: Visualize the distribution of LoanAmount
+plt.figure(figsize=(10, 6))
+sns.histplot(ld['LoanAmount'], bins=30, kde=True)
+plt.title('Distribution of Loan Amount')
+plt.show()
