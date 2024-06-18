@@ -1,0 +1,10 @@
+#IMPORT THE DATASET
+ld = pd.read_excel('C:/Users/prade/Downloads/loan_prediction.csv.xlsx')
+ld
+#UNDERSTAND THE DATA
+ld.info()
+ld
+ld.head()
+print(ld.columns)
+#DEAL WITH MISSING VALUES
+ld.isnull().sum()
