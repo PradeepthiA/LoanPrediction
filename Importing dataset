@@ -1,0 +1,2 @@
+ld = pd.read_excel('C:/Users/prade/Downloads/loan_prediction.csv.xlsx')
+ld
