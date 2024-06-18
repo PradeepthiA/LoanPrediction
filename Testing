@@ -1,0 +1,19 @@
+# Predictions on the training set
+train_predictions = model.predict(X_train)
+train_accuracy = accuracy_score(y_train, train_predictions)
+test_predictions = model.predict(X_test)
+test_accuracy = accuracy_score(y_test, test_predictions)
+# Print the accuracies
+print(f"Training Accuracy: {train_accuracy}")
+print(f"Test Accuracy: {test_accuracy}")
+from sklearn.metrics import precision_score,recall_score,f1_score
+prec = precision_score(test_predictions,y_test)
+rec = recall_score(test_predictions,y_test)
+f1 = f1_score(test_predictions,y_test)
+print('Precision:' ,prec)
+print('Recall:' ,rec)
+print('f1:' ,f1)
+#CREATE A CONFUSION MATRIX
+conf_matrix = confusion_matrix(y_test, test_predictions)
+print("Confusion Matrix:")
+print(conf_matrix)
