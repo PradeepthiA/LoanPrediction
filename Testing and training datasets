@@ -1,3 +1,20 @@
-SPLIT THE DATASET INTO TRAINING SETS AND TEST SETS
+#SPLIT THE DATASET INTO TRAINING SETS AND TEST SETS
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,stratify=y, random_state=42)
 print(X.shape,X_train.shape,y_train.shape)
+df = pd.concat([X_test,y_test],axis=1)
+df.to_csv('test.csv',index=False)
+#BUILD THE MACHINE LEARNING MODEL
+# In this example, using a RandomForestClassifier
+model = RandomForestClassifier(random_state=42)
+from sklearn.impute import SimpleImputer
+# Assuming X is your feature matrix
+imputer = SimpleImputer(strategy='mean')  # You can choose a different strategy
+X_imputed = imputer.fit_transform(X)
+# Assuming X is your feature matrix
+X_no_missing = X.dropna()
+#8.FIT THE MODEL ON TRAINING DATASET
+from sklearn.experimental import enable_hist_gradient_boosting
+from sklearn.ensemble import HistGradientBoostingClassifier
+model = HistGradientBoostingClassifier()
+model.fit(X_train, y_train)
+model.fit(X_train, y_train)
